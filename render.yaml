@@ -4,7 +4,16 @@ services:
     env: node
     rootDir: backend
     buildCommand: npm install
-    startCommand: node server.js
+    startCommand: npm start
     envVars:
       - key: MONGO_URI
-        sync: false
+        value: your_mongo_uri
+      - key: JWT_SECRET
+        value: your_jwt_secret
+
+  - type: web
+    name: blog-frontend
+    env: static
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
